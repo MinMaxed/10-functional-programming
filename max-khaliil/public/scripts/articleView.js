@@ -2,8 +2,10 @@
 var app = app || {};
 
 
-function articlieViewIIFE(module) {
+(function (module) {
   var articleView = {};
+  let source = $('#article-template');
+  let template = Handlebars.compile(source.text());
 
   articleView.populateFilters = () => {
     $('article').each(function () {
@@ -141,4 +143,5 @@ function articlieViewIIFE(module) {
     $('#blog-stats .articles').text(app.Article.all.length);
     $('#blog-stats .words').text(app.Article.numWordsAll());
   };
-} articlieViewIIFE();
+  module.articleView = articleView;
+}) (app);
