@@ -4,7 +4,7 @@ var app = app || {};
 
 (function (module) {
   var articleView = {};
-  let source = $('#article-template');
+  let source = $('#author-template');
   let template = Handlebars.compile(source.text());
 
   articleView.populateFilters = () => {
