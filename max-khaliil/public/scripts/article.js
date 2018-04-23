@@ -43,11 +43,23 @@ var app = app || {};
   };
 
   Article.allAuthors = () => {
-    return Article.all.map(articleObject => articleObject.author).reduce( );
+    let authorArray = []
+    return Article.all.map(articleObject => articleObject.author).reduce((acc, currentValue) => {
+      if (!(authorArray.includes(currentValue)))authorArray.push(currentValue)
+      return authorArray
+    } );
   };
 
   Article.numWordsByAuthor = () => {
-    return Article.allAuthors().map(author => { })
+    return Article.allAuthors().map(author => {
+      return {
+        name: author,
+        words: Article.all.filter(element=>element.author===author).map(element=>element.body.split(' ').length).reduce(reducer)
+      }
+
+
+    })
+
   };
 
   Article.truncateTable = callback => {
